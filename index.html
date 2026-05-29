@@ -403,6 +403,139 @@ a { text-decoration: none; color: inherit; }
 }
 .back-btn:hover { color: var(--black); border-color: var(--dark-gray); }
 
+/* ── Back to Homepage Button ────────────────────────────────── */
+.back-home-container {
+  display: flex; justify-content: center; margin: 24px 0 32px;
+}
+.back-home-btn {
+  padding: 14px 32px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+  background: var(--white); border: 2px solid var(--dark-gray);
+  color: var(--off-black); cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s;
+  min-width: 240px; text-align: center;
+}
+.back-home-btn:hover {
+  background: var(--dark-gray); color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+.back-home-btn:active {
+  transform: scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN — MOBILE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .wrap { padding: 0 24px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .topbar-inner { flex-direction: column; gap: 12px; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 13px; }
+  .wrap { padding: 0 18px; }
+
+  /* Topbar adjustments */
+  .topbar { padding: 12px 18px; }
+  .topbar h1 { font-size: 13px; }
+  .topbar .meta { font-size: 10px; gap: 6px; }
+  .data-source { font-size: 9px; }
+  .topbar-inner { flex-direction: column; gap: 8px; }
+
+  /* Back to Homepage button */
+  .back-home-container { margin: 16px 0 20px; }
+  .back-home-btn {
+    padding: 12px 24px; font-size: 13px; min-width: 200px;
+  }
+
+  /* KPI Grid */
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+  .kpi-card { padding: 16px 18px; }
+
+  /* Score Grid */
+  .score-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  /* Dev Card */
+  .dev-body { flex-direction: column; gap: 16px; }
+  .dev-right { width: 100%; }
+
+  /* Pillar Cards */
+  .pillar-card { padding: 18px 20px; }
+  .ring { width: 50px; height: 50px; }
+
+  /* Pay Period Toggle */
+  .pp-toggle { gap: 4px; margin: 12px 0 16px; }
+  .pp-btn { padding: 5px 10px; font-size: 10px; }
+
+  /* Section Headers */
+  .section-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .filters { width: 100%; }
+
+  /* Cards */
+  .card-pad { padding: 16px 18px; }
+
+  /* Typography */
+  .label-xs { font-size: 9px; }
+  .label-sm { font-size: 10px; }
+
+  /* Two-column layouts */
+  .cc2-pair { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Ramp Stage List */
+  .ramp-stages { grid-template-columns: 1fr; gap: 10px; }
+  .ramp-card { padding: 14px 16px; }
+
+  /* Progress Pyramid */
+  .progress-pyramid { padding: 12px; font-size: 12px; }
+  .progress-row { padding: 8px 12px; font-size: 11px; }
+  .progress-row .pct { font-size: 10px; }
+
+  /* Metrics Grid */
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .metric-box { padding: 14px 12px; }
+
+  /* Coach Performance Section */
+  .cc-search { gap: 8px; margin-bottom: 12px; }
+  .cc-search input { font-size: 12px; padding: 8px 10px; }
+  .coach-list { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .coach-card { padding: 12px; }
+  .cc2-name { font-size: 12px; max-width: 90px; }
+  .cc2-level { font-size: 9px; }
+  .cc2-circle { width: 42px; height: 42px; }
+  .cc2-num { font-size: 18px; }
+
+  /* Weight Row */
+  .weight-row { flex-direction: column; gap: 12px; }
+  .w-item { flex-direction: row; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 12px; }
+  .wrap { padding: 0 12px; }
+
+  /* Topbar */
+  .topbar { padding: 10px 12px; }
+  .topbar h1 { font-size: 12px; line-height: 1.2; }
+  .topbar .meta { font-size: 9px; gap: 4px; }
+  
+  /* Back button */
+  .back-home-btn { padding: 10px 20px; font-size: 12px; min-width: 160px; }
+
+  /* Grids */
+  .kpi-grid { grid-template-columns: 1fr; gap: 8px; margin: 12px 0; }
+  .score-grid { gap: 12px; }
+
+  /* Coach list */
+  .coach-list { grid-template-columns: 1fr; gap: 8px; }
+  .cc2-circle { width: 38px; height: 38px; }
+  .cc2-num { font-size: 16px; }
+  
+  /* Metrics */
+  .metrics-grid { grid-template-columns: 1fr; gap: 8px; }
+}
+
 /* ── Pay Period Toggle ────────────────────────────────── */
 .pp-toggle { display: flex; gap: 6px; flex-wrap: wrap; margin: 14px 0 22px; }
 .pp-btn {
@@ -756,7 +889,6 @@ a { text-decoration: none; color: inherit; }
   <div class="topbar">
     <div class="topbar-inner">
       <div style="display:flex;align-items:center;gap:18px">
-        <button class="topbar-back" onclick="showOverview()">← Dashboard</button>
         <div>
           <h1>Coach Curriculum Dashboard</h1>
           <div class="meta">
@@ -778,9 +910,10 @@ a { text-decoration: none; color: inherit; }
   </div>
 
   <div class="wrap">
-    <button class="back-btn" onclick="showOverview()">
-      ← &nbsp;Back to Club Overview
-    </button>
+    <!-- Back to Homepage Button -->
+    <div class="back-home-container">
+      <button class="back-home-btn" onclick="showOverview()">Back to Homepage</button>
+    </div>
 
     <!-- Pay Period Toggle -->
     <div class="pp-toggle" id="pp-toggle"><!-- JS --></div>
