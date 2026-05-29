@@ -833,7 +833,7 @@ a { text-decoration: none; color: inherit; }
 
       <!-- Club Health Score -->
       <div class="kpi-card" id="kpi-health">
-        <div class="kpi-lbl label-xs">Club Health Score</div>
+        <div class="kpi-lbl label-xs">Team Culture Score</div>
         <div class="kpi-body">
           <div class="ring" style="width:58px;height:58px">
             <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
@@ -854,7 +854,7 @@ a { text-decoration: none; color: inherit; }
 
       <!-- At-Risk (expandable) -->
       <div class="kpi-card" id="kpi-risk" onclick="toggleRiskExpansion()" style="cursor:pointer">
-        <div class="kpi-lbl label-xs">At-Risk Coaches</div>
+        <div class="kpi-lbl label-xs">Coaches Building Momentum</div>
         <div class="kpi-body">
           <div class="kpi-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
@@ -920,7 +920,7 @@ a { text-decoration: none; color: inherit; }
     <!-- At-Risk Coaches Expansion -->
     <div class="expansion" id="risk-expansion">
       <div class="exp-header">
-        <span class="label-sm">At-Risk Coaches — <span id="risk-exp-total">0</span> Flagged</span>
+        <span class="label-sm">Coaches Building Momentum — <span id="risk-exp-total">0</span> Flagged</span>
         <button class="exp-close label-xs" onclick="toggleRiskExpansion()">✕ &nbsp;Close</button>
       </div>
       <div id="risk-exp-body"><!-- JS --></div>
@@ -1298,7 +1298,7 @@ function band(score) {
 }
 
 function statusLabel(score) {
-  return score >= 75 ? 'Top Performer' : score >= 50 ? 'Building' : 'Needs Attention';
+  return score >= 75 ? 'Setting the Standard' : score >= 50 ? 'Delivering Results' : 'Building Momentum';
 }
 
 /* Ring color — charcoal-tinted, restrained EQX palette */
@@ -1468,9 +1468,9 @@ function renderBands(coaches) {
     needs:    coaches.filter(c => c.b === 'needs')
   };
   document.getElementById('bands-container').innerHTML =
-    renderBand('top',      'TOP PERFORMERS', groups.top)     +
-    renderBand('building', 'BUILDING',       groups.building) +
-    renderBand('needs',    'NEEDS ATTENTION', groups.needs);
+    renderBand('top',      'SETTING THE STANDARD', groups.top)     +
+    renderBand('building', 'DELIVERING RESULTS',       groups.building) +
+    renderBand('needs',    'BUILDING MOMENTUM', groups.needs);
 }
 
 function renderBand(b, label, coaches) {
@@ -1644,7 +1644,7 @@ function renderRiskExpansion() {
   const atRisk = window.REAL_COACHES.filter(c => c.isAtRisk);
   document.getElementById('risk-exp-total').textContent = atRisk.length;
   document.getElementById('risk-exp-body').innerHTML = atRisk.length === 0
-    ? '<div style="padding:18px 22px;font-size:12px;color:var(--mid-gray)">No at-risk coaches flagged this period.</div>'
+    ? '<div style="padding:18px 22px;font-size:12px;color:var(--mid-gray)">No coaches building momentum flagged this period.</div>'
     : atRisk.map(c => {
         const m   = getPeriodMetrics(c, 'may03');
         const s   = overallScore(m);
